@@ -49,3 +49,10 @@ WordPress/src/main/res/values/com_crashlytics_export_strings.xml
 WordPress/src/androidTest/monkeys/settings.py
 *.pyc
 WordPress/src/androidTest/monkeys/*.png
+
+# Buck stuff
+BUCK
+.okbuck
+.buckd
+.buckconfig.local
+buck-out
