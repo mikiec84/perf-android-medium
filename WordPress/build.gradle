@@ -190,4 +190,16 @@ if (["storeFile", "storePassword", "keyAlias", "keyPassword"].count { !project.h
         }
     }
     android.buildTypes.release.signingConfig = android.signingConfigs.release
+} else {
+    android {
+        signingConfigs {
+            release {
+                keyAlias = 'androiddebugkey'
+                keyPassword = 'android'
+                storeFile = file('../keystore/debug.keystore')
+                storePassword = 'android'
+            }
+        }
+    }
+    android.buildTypes.release.signingConfig = android.signingConfigs.release
 }
