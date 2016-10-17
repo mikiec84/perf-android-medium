@@ -1333,34 +1333,33 @@ public class SiteSettingsFragment extends PreferenceFragment
     private final class ActionModeCallback implements ActionMode.Callback {
         @Override
         public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-                case R.id.menu_delete:
-                    SparseBooleanArray checkedItems = getAdapter().getItemsSelected();
+            if (R.id.menu_delete == menuItem.getItemId()) {
+                SparseBooleanArray checkedItems = getAdapter().getItemsSelected();
 
-                    HashMap<String, Object> properties = new HashMap<>();
-                    properties.put("num_items_deleted", checkedItems.size());
-                    AnalyticsUtils.trackWithCurrentBlogDetails(AnalyticsTracker.Stat.SITE_SETTINGS_DELETED_LIST_ITEMS, properties);
+                HashMap<String, Object> properties = new HashMap<>();
+                properties.put("num_items_deleted", checkedItems.size());
+                AnalyticsUtils.trackWithCurrentBlogDetails(AnalyticsTracker.Stat.SITE_SETTINGS_DELETED_LIST_ITEMS, properties);
 
-                    for (int i = checkedItems.size() - 1; i >= 0; i--) {
-                        final int index = checkedItems.keyAt(i);
+                for (int i = checkedItems.size() - 1; i >= 0; i--) {
+                    final int index = checkedItems.keyAt(i);
 
-                        if (checkedItems.get(index)) {
-                            mEditingList.remove(index);
-                        }
+                    if (checkedItems.get(index)) {
+                        mEditingList.remove(index);
                     }
+                }
 
-                    mSiteSettings.saveSettings();
-                    mActionMode.finish();
-                    return true;
-                case R.id.menu_select_all:
-                    for (int i = 0; i < getAdapter().getItemCount(); i++) {
-                        getAdapter().setItemSelected(i);
-                    }
+                mSiteSettings.saveSettings();
+                mActionMode.finish();
+                return true;
+            } else if (R.id.menu_select_all == menuItem.getItemId()) {
+                for (int i = 0; i < getAdapter().getItemCount(); i++) {
+                    getAdapter().setItemSelected(i);
+                }
 
-                    mActionMode.invalidate();
-                    return true;
-                default:
-                    return false;
+                mActionMode.invalidate();
+                return true;
+            } else {
+                return false;
             }
         }
 
