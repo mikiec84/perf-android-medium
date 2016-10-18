@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import org.wordpress.android.util.local.R;
+
 public class DateTimeUtils {
     private DateTimeUtils() {
         throw new AssertionError();
