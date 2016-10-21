@@ -25,3 +25,16 @@ subprojects {
         }
     }
 }
+
+gradle.addListener(new TaskExecutionAdapter() {
+    @Override
+    void beforeExecute(Task task) {
+        task.outputs.fileProperties.each { property ->
+            if (property instanceof org.gradle.api.internal.tasks.CacheableTaskOutputFilePropertySpec) {
+                println "  >> OUT: $property.propertyName - $property.outputFile"
+            } else {
+                println "  >> OUT(non-cacheable): $property.propertyName - $property.propertyFiles.files"
+            }
+        }
+    }
+})
