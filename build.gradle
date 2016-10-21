@@ -17,7 +17,7 @@ subprojects {
             || "com.android.build.gradle.LibraryPlugin".equals(plugin.class.name)) {
             project.android.dexOptions.preDexLibraries = rootProject.ext.preDexLibs
             tasks.matching { task ->
-                task.getClass().isAnnotationPresent(ParallelizableTask)
+                task.getClass().isAnnotationPresent(ParallelizableTask) || task.getClass().name == "com.android.build.gradle.tasks.factory.AndroidJavaCompile"
             }.all { task ->
                 // println "Parallelizable task: ${task.path}"
                 task.outputs.cacheIf { true }
