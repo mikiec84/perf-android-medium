@@ -1,8 +1,10 @@
 buildscript {
     repositories {
+        mavenLocal()
         jcenter()
     }
     dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.0-dev'
         classpath 'com.uber:okbuck:0.8.1'
     }
 }
