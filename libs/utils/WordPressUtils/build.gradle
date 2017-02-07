@@ -9,7 +9,7 @@ buildscript {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
 
 repositories {
     jcenter()
@@ -51,15 +51,15 @@ android.libraryVariants.all { variant ->
     }
 }
 
-publish {
-    artifactId = 'utils'
-    userOrg = 'wordpress-mobile'
-    groupId = 'org.wordpress'
-    uploadName = 'utils'
-    description = 'Utils library for Android'
-    publishVersion = android.defaultConfig.versionName
-    licences = ['MIT', 'GPL']
-    website = 'https://github.com/wordpress-mobile/WordPress-Utils-Android/'
-    dryRun = 'false'
-    autoPublish = 'true'
-}
+//publish {
+//    artifactId = 'utils'
+//    userOrg = 'wordpress-mobile'
+//    groupId = 'org.wordpress'
+//    uploadName = 'utils'
+//    description = 'Utils library for Android'
+//    publishVersion = android.defaultConfig.versionName
+//    licences = ['MIT', 'GPL']
+//    website = 'https://github.com/wordpress-mobile/WordPress-Utils-Android/'
+//    dryRun = 'false'
+//    autoPublish = 'true'
+//}
